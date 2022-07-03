@@ -7,3 +7,14 @@ responds to MIDI control messages from midi@3:14.
 See [midi314-pcb](https://github.com/tiliosys/midi314-pcb) and
 [midi314-firmware](https://github.com/tiliosys/midi314-firmware)
 for more information about the keyboard itself.
+
+Dependencies
+============
+
+This crate uses [rust-jack](https://github.com/RustAudio/rust-jack).
+It requires that you install Jack or Pipewire Jack using your package manager.
+On Fedora, I use:
+
+```
+sudo dnf install pipewire-jack-audio-connection-kit-devel
+```

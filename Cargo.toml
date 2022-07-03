@@ -1,0 +1,8 @@
+[package]
+name = "midi314-looper"
+version = "0.1.0"
+authors = ["Guillaume Savaton <guillaume.savaton@tiliosys.fr>"]
+
+[dependencies]
+jack = "0.10"
+midi314 = { git = "https://github.com/tiliosys/midi314-lib" }
