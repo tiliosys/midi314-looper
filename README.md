@@ -37,28 +37,32 @@ From the root of the source tree, start the looper:
 In another terminal, start FluidSynth:
 
 ```
-fluidsynth
+fluidsynth -p FluidSynth
 ```
 
-In a third terminal, list the available input and output ports:
+In a third terminal, connect the keyboard to FluidSynth:
 
 ```
-pw-link -i
-pw-link -o
+pw-link "Midi-Bridge:Arduino Leonardo:(capture_0) Arduino Leonardo MIDI 1" "Midi-Bridge:FluidSynth:(playback_0) FluidSynth"
 ```
 
-Connect the keyboard to FluidSynth (replace "141542" with the actual port number):
-
-```
-pw-link "Midi-Bridge:Arduino Leonardo:(capture_0) Arduino Leonardo MIDI 1" "Midi-Bridge:FLUID Synth (141542):(playback_0) Synth input port (141542:0)"
-```
-
-Connect the looper with the keyboard, FluidSynth, and the audio output (some port names may differ on your system):
+Connect the MIDI input of the looper with the keyboard:
 
 ```
 pw-link "Midi-Bridge:Arduino Leonardo:(capture_0) Arduino Leonardo MIDI 1" midi314-looper:midi_in
+```
+
+Connect the audio input of the looper to FluidSynth:
+
+```
 pw-link "PipeWire ALSA [fluidsynth]:output_FL" midi314-looper:audio_in_1
 pw-link "PipeWire ALSA [fluidsynth]:output_FR" midi314-looper:audio_in_2
+```
+
+Connect the output of the looper to your system audio output.
+You can use `pw-link -i` to get the actual port names for your system:
+
+```
 pw-link midi314-looper:audio_out_1 alsa_output.pci-0000_00_1b.0.analog-stereo:playback_FL
 pw-link midi314-looper:audio_out_2 alsa_output.pci-0000_00_1b.0.analog-stereo:playback_FR
 ```
