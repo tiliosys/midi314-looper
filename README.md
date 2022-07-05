@@ -8,8 +8,22 @@ See [midi314-pcb](https://github.com/tiliosys/midi314-pcb) and
 [midi314-firmware](https://github.com/tiliosys/midi314-firmware)
 for more information about the keyboard itself.
 
+MIDI events
+-----------
+
+This program supports the following custom MIDI Control-Change events:
+
+| Identifier | Event                  |
+|:-----------|:-----------------------|
+| 20         | Start recording a loop |
+| 21         | Play a loop            |
+| 22         | Mute a loop            |
+| 23         | Delete a loop          |
+| 24         | Mute all other loops   |
+| 25         | Unmute all muted loops |
+
 Building
-========
+--------
 
 This crate uses [rust-jack](https://github.com/RustAudio/rust-jack).
 It requires that you install Jack or Pipewire Jack using your package manager.
@@ -26,7 +40,7 @@ cargo build --release
 ```
 
 Running
-=======
+-------
 
 From the root of the source tree, start the looper:
 
